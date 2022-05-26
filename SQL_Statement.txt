@@ -1,0 +1,63 @@
+DROP DATABASE IF EXISTS ME_company_db;
+
+DROP USER IF EXISTS 'ME_company_db' @'localhost';
+
+CREATE DATABASE IF NOT EXISTS ME_company_db;
+
+CREATE USER 'ME_company_db' @'localhost' IDENTIFIED WITH mysql_native_password BY 'Password1';
+
+GRANT USAGE ON *.* TO 'ME_company_db' @'localhost' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
+
+GRANT ALL PRIVILEGES ON `ME\_company\_db`.* TO 'ME_company_db' @'localhost';
+
+USE ME_company_db;
+
+DROP TABLE IF EXISTS employee_table;
+
+DROP TABLE IF EXISTS works_table;
+
+CREATE TABLE IF NOT EXISTS employee_table (
+    emp_id BIGINT UNSIGNED AUTO_INCREMENT,
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL,
+    birth_day VARCHAR(255) NOT NULL,
+    sex CHAR NOT NULL,
+    salary INTEGER UNSIGNED NOT NULL DEFAULT 0,
+    supervisor_id INTEGER UNSIGNED DEFAULT NULL,
+    branch_id INTEGER UNSIGNED NOT NULL,
+    PRIMARY KEY (emp_id)
+);
+
+INSERT INTO
+    employee_table
+VALUES
+    (100, "David", "Wallace", "1967-11-17", "M", 25000, NULL, 1),
+    (101, "Jan", "Levinson", "1961-05-11", "F", 110000, 100, 1),
+    (102, "Michael", "Scott", "1964-03-15", "M", 75000, 100, 2),
+    (103, "Angela", "Martin", "1971-06-25", "F", 63000, 102, 2),
+    (104, "Kelly", "Kapoor", "1980-02-05", "F", 55000, 102, 2),
+    (105, "Stanley", "Hudson", "1958-02-19", "M", 69000, 102, 2),
+    (106, "Josh", "Porter", "1969-09-05", "M", 78000, 100, 3),
+    (107, "Andy", "Bernard", "1973-07-22", "M", 65000, 106, 3),
+    (108, "Jim", "Halpert", "1976-10-01", "M", 71000, 106, 3);
+
+CREATE TABLE works_table (
+    emp_id BIGINT UNSIGNED,
+    client_name VARCHAR(255) NOT NULL,
+    total_sales INTEGER UNSIGNED NOT NULL,
+    FOREIGN KEY (emp_id) REFERENCES employee_table(emp_id)
+);
+
+INSERT INTO
+    works_table
+VALUES
+    (105, "Apple Company", 55000),
+    (102, "RD Company", 267000),
+    (108, "Small Company", 22500),
+    (107, "JB Company", 5000),
+    (108, "JB Company", 12000),
+    (105, "Big company", 33000),
+    (107, "PD company", 26000),
+    (102, "ZIP company", 15000),
+    (105, "ZIP company", 130000);
+    
