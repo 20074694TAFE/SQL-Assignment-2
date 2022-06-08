@@ -8,5 +8,120 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         
+        <TabControl >
+            <TabItem Header="Welcome">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="20"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="1" Grid.Column="1" Content="MyCompany Database Search"  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="48"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Text="Insert Company Summary here." VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Search Employees">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="20"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="20"/>
+                    </Grid.RowDefinitions>
+                    <ListBox Grid.Row="1" Grid.Column="1"  Background="#FFE8E8E8"/>
+                    <Grid Grid.Row="1" Grid.Column="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="90"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="10"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="10"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="2" Grid.Column="1" Content="First Name:" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+                        <Label Grid.Row="3" Grid.Column="1" Content="Last Name:" HorizontalAlignment="Right"/>
+                        <Label Grid.Row="4" Grid.Column="1" Content="BirthDay:" HorizontalAlignment="Right"/>
+                        <Label Grid.Row="5" Grid.Column="1" Content="Sex:" HorizontalAlignment="Right"/>
+                        <Label Grid.Row="6" Grid.Column="1" Content="Salary:" HorizontalAlignment="Right"/>
+                        <Label Grid.Row="7" Grid.Column="1" Content="Supervisor ID:" HorizontalAlignment="Right"/>
+                        <Label Grid.Row="8" Grid.Column="1" Content="Branch ID:" HorizontalAlignment="Right"/>
+                        <TextBox x:Name="SearchTextboxFirstName" Grid.Row="2" Grid.Column="2" Height="20"/>
+                        <TextBox x:Name="SearchTextboxLastName" Grid.Row="3" Grid.Column="2" Height="20"/>
+                        <TextBox x:Name="SearchTextboxBirthday" Grid.Row="4" Grid.Column="2" Height="20"/>
+                        <ComboBox x:Name="SearchComboboxSex" Grid.Row="5" Grid.Column="2" Height="20"/>
+                        <TextBox x:Name="SearchTextboxSalary" Grid.Row="6" Grid.Column="2" Height="20"/>
+                        <TextBox x:Name="SearchTextboxSupervisorId" Grid.Row="7" Grid.Column="2" Height="20"/>
+                        <TextBox x:Name="SearchTextboxBranchId" Grid.Row="8" Grid.Column="2" Height="20"/>
+                        <Button Grid.Row="9" Grid.Column="2" Content="Search" Height="20" Width="70" VerticalAlignment="Top" HorizontalAlignment="Left" Click="SearchButton_Click"/>
+                        <Button Grid.Row="9" Grid.Column="2" Content="Clear" Height="20" Width="70" VerticalAlignment="Top" HorizontalAlignment="Right" Click="ClearButton_Click"/>
+
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Add Employee">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="90"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="10"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="2" Grid.Column="1" Content="First Name:" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+                    <Label Grid.Row="3" Grid.Column="1" Content="Last Name:" HorizontalAlignment="Right"/>
+                    <Label Grid.Row="4" Grid.Column="1" Content="BirthDay:" HorizontalAlignment="Right"/>
+                    <Label Grid.Row="5" Grid.Column="1" Content="Sex:" HorizontalAlignment="Right"/>
+                    <Label Grid.Row="6" Grid.Column="1" Content="Salary:" HorizontalAlignment="Right"/>
+                    <Label Grid.Row="7" Grid.Column="1" Content="Supervisor ID:" HorizontalAlignment="Right"/>
+                    <Label Grid.Row="8" Grid.Column="1" Content="Branch ID:" HorizontalAlignment="Right"/>
+                    <TextBox x:Name="NewTextboxFirstName" Grid.Row="2" Grid.Column="2" Height="20"/>
+                    <TextBox x:Name="NewTextboxLastName" Grid.Row="3" Grid.Column="2" Height="20"/>
+                    <TextBox x:Name="NewTextboxBirthday" Grid.Row="4" Grid.Column="2" Height="20"/>
+                    <ComboBox x:Name="NewComboboxSex" Grid.Row="5" Grid.Column="2" Height="20"/>
+                    <TextBox x:Name="NewTextboxSalary" Grid.Row="6" Grid.Column="2" Height="20"/>
+                    <TextBox x:Name="NewTextboxSupervisorId" Grid.Row="7" Grid.Column="2" Height="20"/>
+                    <TextBox x:Name="NewTextboxBranchId" Grid.Row="8" Grid.Column="2" Height="20"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+
+
     </Grid>
 </Window>
