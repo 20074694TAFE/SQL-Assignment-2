@@ -18,5 +18,10 @@ namespace SQL_Assignment_2
             this.client_name = client_name;
             this.total_sales = total_sales;
         }
+
+        public override string ToString()
+        {
+            return client_name + " : $" + total_sales + " (" + emp_id + ")";
+        }
     }
 }

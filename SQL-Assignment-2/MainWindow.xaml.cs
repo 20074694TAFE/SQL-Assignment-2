@@ -32,16 +32,17 @@ namespace SQL_Assignment_2
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
-            //IEnumerable<Employee_data> employees = 
+            IEnumerable<Employee_data> employees = null;
         }
 
-        private void ClearButton_Click(object sender, RoutedEventArgs e)
+        private void ResetButton_Click(object sender, RoutedEventArgs e)
         {
             ClearSearchEmployee();
         }
         private void ClearSearchEmployee()
         {
             SearchComboboxSex.SelectedItem = sexList[0];
+            SearchTextboxEmployeeId.Text = "";
             SearchTextboxFirstName.Text = "";
             SearchTextboxLastName.Text = "";
             SearchTextboxBirthday.Text = "";
@@ -53,12 +54,23 @@ namespace SQL_Assignment_2
         private void ClearNewEmployee()
         {
             NewComboboxSex.SelectedItem = sexList[0];
+            NewTextboxEmployeeId.Text = "";
             NewTextboxFirstName.Text = "";
             NewTextboxLastName.Text = "";
             NewTextboxBirthday.Text = "";
             NewTextboxSalary.Text = "";
             NewTextboxSupervisorId.Text = "";
             NewTextboxBranchId.Text = "";
+        }
+
+        private void ClearButton_Click(object sender, RoutedEventArgs e)
+        {
+            ClearNewEmployee();
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

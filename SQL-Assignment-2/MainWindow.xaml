@@ -45,6 +45,8 @@
                             <ColumnDefinition Width="10"/>
                             <ColumnDefinition Width="90"/>
                             <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="180"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="10"/>
                         </Grid.ColumnDefinitions>
@@ -58,25 +60,31 @@
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="10"/>
                         </Grid.RowDefinitions>
-                        <Label Grid.Row="2" Grid.Column="1" Content="First Name:" VerticalAlignment="Top" HorizontalAlignment="Right"/>
-                        <Label Grid.Row="3" Grid.Column="1" Content="Last Name:" HorizontalAlignment="Right"/>
-                        <Label Grid.Row="4" Grid.Column="1" Content="BirthDay:" HorizontalAlignment="Right"/>
-                        <Label Grid.Row="5" Grid.Column="1" Content="Sex:" HorizontalAlignment="Right"/>
-                        <Label Grid.Row="6" Grid.Column="1" Content="Salary:" HorizontalAlignment="Right"/>
-                        <Label Grid.Row="7" Grid.Column="1" Content="Supervisor ID:" HorizontalAlignment="Right"/>
-                        <Label Grid.Row="8" Grid.Column="1" Content="Branch ID:" HorizontalAlignment="Right"/>
-                        <TextBox x:Name="SearchTextboxFirstName" Grid.Row="2" Grid.Column="2" Height="20"/>
-                        <TextBox x:Name="SearchTextboxLastName" Grid.Row="3" Grid.Column="2" Height="20"/>
-                        <TextBox x:Name="SearchTextboxBirthday" Grid.Row="4" Grid.Column="2" Height="20"/>
-                        <ComboBox x:Name="SearchComboboxSex" Grid.Row="5" Grid.Column="2" Height="20"/>
-                        <TextBox x:Name="SearchTextboxSalary" Grid.Row="6" Grid.Column="2" Height="20"/>
-                        <TextBox x:Name="SearchTextboxSupervisorId" Grid.Row="7" Grid.Column="2" Height="20"/>
-                        <TextBox x:Name="SearchTextboxBranchId" Grid.Row="8" Grid.Column="2" Height="20"/>
-                        <Button Grid.Row="9" Grid.Column="2" Content="Search" Height="20" Width="70" VerticalAlignment="Top" HorizontalAlignment="Left" Click="SearchButton_Click"/>
-                        <Button Grid.Row="9" Grid.Column="2" Content="Clear" Height="20" Width="70" VerticalAlignment="Top" HorizontalAlignment="Right" Click="ClearButton_Click"/>
+                        <Label Grid.Row="2" Grid.Column="1" Content="Employee ID:" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+                        <Label Grid.Row="3" Grid.Column="1" Content="First Name:" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+                        <Label Grid.Row="4" Grid.Column="1" Content="Last Name:" HorizontalAlignment="Right"/>
+                        <Label Grid.Row="5" Grid.Column="1" Content="BirthDay:" HorizontalAlignment="Right"/>
+                        <Label Grid.Row="6" Grid.Column="1" Content="Sex:" HorizontalAlignment="Right"/>
+                        <Label Grid.Row="7" Grid.Column="1" Content="Salary:" HorizontalAlignment="Right"/>
+                        <Label Grid.Row="8" Grid.Column="1" Content="Supervisor ID:" HorizontalAlignment="Right"/>
+                        <Label Grid.Row="9" Grid.Column="1" Content="Branch ID:" HorizontalAlignment="Right"/>
+                        <TextBox x:Name="SearchTextboxEmployeeId" Grid.Row="2" Grid.Column="2" Height="20"/>
+                        <TextBox x:Name="SearchTextboxFirstName" Grid.Row="3" Grid.Column="2" Height="20"/>
+                        <TextBox x:Name="SearchTextboxLastName" Grid.Row="4" Grid.Column="2" Height="20"/>
+                        <TextBox x:Name="SearchTextboxBirthday" Grid.Row="5" Grid.Column="2" Height="20"/>
+                        <ComboBox x:Name="SearchComboboxSex" Grid.Row="6" Grid.Column="2" Height="20"/>
+                        <TextBox x:Name="SearchTextboxSalary" Grid.Row="7" Grid.Column="2" Height="20"/>
+                        <TextBox x:Name="SearchTextboxSupervisorId" Grid.Row="8" Grid.Column="2" Height="20"/>
+                        <TextBox x:Name="SearchTextboxBranchId" Grid.Row="9" Grid.Column="2" Height="20"/>
+                        <Button Grid.Row="10" Grid.Column="2" Content="Search" Height="20" Width="70" VerticalAlignment="Top" HorizontalAlignment="Left" Click="SearchButton_Click"/>
+                        <Button Grid.Row="10" Grid.Column="2" Content="Reset" Height="20" Width="70" VerticalAlignment="Top" HorizontalAlignment="Right" Click="ResetButton_Click"/>
+                        <ListBox Grid.Row="3" Grid.RowSpan="7" Grid.Column="4" Background="#FFE8E8E8"/>
+                        <Button Grid.Row="11" Grid.Column="2" Content="Update tables" Height="20" Width="90" VerticalAlignment="Top" HorizontalAlignment="Left" Click="ResetButton_Click"/>
 
                     </Grid>
                 </Grid>
@@ -100,23 +108,29 @@
                         <RowDefinition Height="30"/>
                         <RowDefinition Height="30"/>
                         <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="10"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="2" Grid.Column="1" Content="First Name:" VerticalAlignment="Top" HorizontalAlignment="Right"/>
-                    <Label Grid.Row="3" Grid.Column="1" Content="Last Name:" HorizontalAlignment="Right"/>
-                    <Label Grid.Row="4" Grid.Column="1" Content="BirthDay:" HorizontalAlignment="Right"/>
-                    <Label Grid.Row="5" Grid.Column="1" Content="Sex:" HorizontalAlignment="Right"/>
-                    <Label Grid.Row="6" Grid.Column="1" Content="Salary:" HorizontalAlignment="Right"/>
-                    <Label Grid.Row="7" Grid.Column="1" Content="Supervisor ID:" HorizontalAlignment="Right"/>
-                    <Label Grid.Row="8" Grid.Column="1" Content="Branch ID:" HorizontalAlignment="Right"/>
-                    <TextBox x:Name="NewTextboxFirstName" Grid.Row="2" Grid.Column="2" Height="20"/>
-                    <TextBox x:Name="NewTextboxLastName" Grid.Row="3" Grid.Column="2" Height="20"/>
-                    <TextBox x:Name="NewTextboxBirthday" Grid.Row="4" Grid.Column="2" Height="20"/>
-                    <ComboBox x:Name="NewComboboxSex" Grid.Row="5" Grid.Column="2" Height="20"/>
-                    <TextBox x:Name="NewTextboxSalary" Grid.Row="6" Grid.Column="2" Height="20"/>
-                    <TextBox x:Name="NewTextboxSupervisorId" Grid.Row="7" Grid.Column="2" Height="20"/>
-                    <TextBox x:Name="NewTextboxBranchId" Grid.Row="8" Grid.Column="2" Height="20"/>
+                    <Label Grid.Row="2" Grid.Column="1" Content="Employee ID:" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+                    <Label Grid.Row="3" Grid.Column="1" Content="First Name:" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+                    <Label Grid.Row="4" Grid.Column="1" Content="Last Name:" HorizontalAlignment="Right"/>
+                    <Label Grid.Row="5" Grid.Column="1" Content="BirthDay:" HorizontalAlignment="Right"/>
+                    <Label Grid.Row="6" Grid.Column="1" Content="Sex:" HorizontalAlignment="Right"/>
+                    <Label Grid.Row="7" Grid.Column="1" Content="Salary:" HorizontalAlignment="Right"/>
+                    <Label Grid.Row="8" Grid.Column="1" Content="Supervisor ID:" HorizontalAlignment="Right"/>
+                    <Label Grid.Row="9" Grid.Column="1" Content="Branch ID:" HorizontalAlignment="Right"/>
+                    <TextBox x:Name="NewTextboxEmployeeId" Grid.Row="2" Grid.Column="2" Height="20"/>
+                    <TextBox x:Name="NewTextboxFirstName" Grid.Row="3" Grid.Column="2" Height="20"/>
+                    <TextBox x:Name="NewTextboxLastName" Grid.Row="4" Grid.Column="2" Height="20"/>
+                    <TextBox x:Name="NewTextboxBirthday" Grid.Row="5" Grid.Column="2" Height="20"/>
+                    <ComboBox x:Name="NewComboboxSex" Grid.Row="6" Grid.Column="2" Height="20"/>
+                    <TextBox x:Name="NewTextboxSalary" Grid.Row="7" Grid.Column="2" Height="20"/>
+                    <TextBox x:Name="NewTextboxSupervisorId" Grid.Row="8" Grid.Column="2" Height="20"/>
+                    <TextBox x:Name="NewTextboxBranchId" Grid.Row="9" Grid.Column="2" Height="20"/>
+                    <Button Grid.Row="10" Grid.Column="2" Content="Add Employee" Height="20" Width="90" VerticalAlignment="Top" HorizontalAlignment="Left" Click="AddButton_Click"/>
+                    <Button Grid.Row="10" Grid.Column="2" Content="Clear" Height="20" Width="50" VerticalAlignment="Top" HorizontalAlignment="Right" Click="ClearButton_Click"/>
+
                 </Grid>
             </TabItem>
         </TabControl>

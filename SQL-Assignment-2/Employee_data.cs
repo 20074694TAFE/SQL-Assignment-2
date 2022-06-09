@@ -54,7 +54,10 @@ namespace SQL_Assignment_2
             Supervisor_id = supervisor_id;
             Branch_id = branch_id;
         }
+        public override string ToString()
+        {
+            return First_name + " " + Last_name + " (" + Emp_id + ")";
+        }
 
-        
     }
 }
