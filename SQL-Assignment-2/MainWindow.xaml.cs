@@ -80,6 +80,7 @@ namespace SQL_Assignment_2
                 {
                     employees = database.SearchEmployeeBranchId(employees, Int32.Parse(SearchTextboxBranchId.Text));
                 }
+                ListBoxEmployees.ItemsSource = employees;
             }
             catch (Exception ex)
             {
@@ -141,6 +142,18 @@ namespace SQL_Assignment_2
                 SearchTextboxSalaryMax.Text = employee_data.Salary.ToString();
                 SearchTextboxSupervisorId.Text = employee_data.Supervisor_id.ToString();
                 SearchTextboxBranchId.Text = employee_data.Branch_id.ToString();
+                switch (employee_data.Sex)
+                {
+                    case 'M':
+                        SearchComboboxSex.SelectedIndex = 1;
+                        break;
+                    case 'F':
+                        SearchComboboxSex.SelectedIndex = 2;
+                        break;
+                    default:
+                        SearchComboboxSex.SelectedIndex = 0;
+                        break;
+                }
                 ListBoxSales.ItemsSource = database.ListEmployeeSales(employee_data);
             }
         }
