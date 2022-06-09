@@ -21,6 +21,7 @@ namespace SQL_Assignment_2
     public partial class MainWindow : Window
     {
         List<string> sexList = new List<string> {"", "Male", "Female"};
+        Database database = new Database();
         public MainWindow()
         {
             InitializeComponent();
@@ -28,11 +29,13 @@ namespace SQL_Assignment_2
             NewComboboxSex.ItemsSource = sexList;
             SearchComboboxSex.SelectedItem = sexList[0];
             NewComboboxSex.SelectedItem = sexList[0];
+            ListBoxEmployees.ItemsSource = database.FetchEmployeeData();
+            ListBoxSales.ItemsSource = database.FetchWorksData();
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
-            IEnumerable<Employee_data> employees = null;
+            IEnumerable<Employee_data> employees = database.FetchEmployeeData();
         }
 
         private void ResetButton_Click(object sender, RoutedEventArgs e)
@@ -46,9 +49,12 @@ namespace SQL_Assignment_2
             SearchTextboxFirstName.Text = "";
             SearchTextboxLastName.Text = "";
             SearchTextboxBirthday.Text = "";
-            SearchTextboxSalary.Text = "";
+            SearchTextboxSalaryMin.Text = "";
+            SearchTextboxSalaryMax.Text = "";
             SearchTextboxSupervisorId.Text = "";
             SearchTextboxBranchId.Text = "";
+            ListBoxEmployees.ItemsSource = database.FetchEmployeeData();
+            ListBoxSales.ItemsSource = database.FetchWorksData();
         }
 
         private void ClearNewEmployee()
@@ -71,6 +77,29 @@ namespace SQL_Assignment_2
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void ListBoxEmployees_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(ListBoxEmployees.SelectedItem != null && ListBoxEmployees.SelectedItem is Employee_data)
+            {
+                Employee_data employee_data = (Employee_data)ListBoxEmployees.SelectedItem;
+                SearchTextboxEmployeeId.Text = employee_data.Emp_id.ToString();
+                SearchTextboxFirstName.Text = employee_data.First_name;
+                SearchTextboxLastName.Text = employee_data.Last_name;
+                SearchTextboxBirthday.Text = employee_data.Birth_day;
+                SearchTextboxSalaryMin.Text = employee_data.Salary.ToString();
+                SearchTextboxSalaryMax.Text = employee_data.Salary.ToString();
+                SearchTextboxSupervisorId.Text = employee_data.Supervisor_id.ToString();
+                SearchTextboxBranchId.Text = employee_data.Branch_id.ToString();
+                ListBoxSales.ItemsSource = database.ListEmployeeSales(employee_data);
+            }
+        }
+
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            ListBoxEmployees.ItemsSource = database.FetchEmployeeData();
+            ListBoxSales.ItemsSource = database.FetchWorksData();
         }
     }
 }

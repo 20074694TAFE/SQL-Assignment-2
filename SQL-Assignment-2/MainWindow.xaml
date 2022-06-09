@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SQL_Assignment_2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="500" Width="800">
     <Grid>
         
         <TabControl >
@@ -39,7 +39,7 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="20"/>
                     </Grid.RowDefinitions>
-                    <ListBox Grid.Row="1" Grid.Column="1"  Background="#FFE8E8E8"/>
+                    <ListBox x:Name="ListBoxEmployees" Grid.Row="1" Grid.Column="1"  Background="#FFE8E8E8" SelectionChanged="ListBoxEmployees_SelectionChanged"/>
                     <Grid Grid.Row="1" Grid.Column="2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="10"/>
@@ -78,13 +78,16 @@
                         <TextBox x:Name="SearchTextboxLastName" Grid.Row="4" Grid.Column="2" Height="20"/>
                         <TextBox x:Name="SearchTextboxBirthday" Grid.Row="5" Grid.Column="2" Height="20"/>
                         <ComboBox x:Name="SearchComboboxSex" Grid.Row="6" Grid.Column="2" Height="20"/>
-                        <TextBox x:Name="SearchTextboxSalary" Grid.Row="7" Grid.Column="2" Height="20"/>
+                        <TextBox x:Name="SearchTextboxSalaryMin" Grid.Row="7" Grid.Column="2" Height="20" Width="60" HorizontalAlignment="Left"/>
+                        <Label Grid.Row="7" Grid.Column="2" Content="to" HorizontalAlignment="Center"/>
+
+                        <TextBox x:Name="SearchTextboxSalaryMax" Grid.Row="7" Grid.Column="2" Height="20" Width="60" HorizontalAlignment="Right"/>
                         <TextBox x:Name="SearchTextboxSupervisorId" Grid.Row="8" Grid.Column="2" Height="20"/>
                         <TextBox x:Name="SearchTextboxBranchId" Grid.Row="9" Grid.Column="2" Height="20"/>
                         <Button Grid.Row="10" Grid.Column="2" Content="Search" Height="20" Width="70" VerticalAlignment="Top" HorizontalAlignment="Left" Click="SearchButton_Click"/>
                         <Button Grid.Row="10" Grid.Column="2" Content="Reset" Height="20" Width="70" VerticalAlignment="Top" HorizontalAlignment="Right" Click="ResetButton_Click"/>
-                        <ListBox Grid.Row="3" Grid.RowSpan="7" Grid.Column="4" Background="#FFE8E8E8"/>
-                        <Button Grid.Row="11" Grid.Column="2" Content="Update tables" Height="20" Width="90" VerticalAlignment="Top" HorizontalAlignment="Left" Click="ResetButton_Click"/>
+                        <ListBox x:Name="ListBoxSales" Grid.Row="3" Grid.RowSpan="7" Grid.Column="4" Background="#FFE8E8E8"/>
+                        <Button Grid.Row="11" Grid.Column="2" Content="Refresh tables" Height="20" Width="90" VerticalAlignment="Top" HorizontalAlignment="Left" Click="RefreshButton_Click"/>
 
                     </Grid>
                 </Grid>

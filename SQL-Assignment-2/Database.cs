@@ -62,14 +62,14 @@ namespace SQL_Assignment_2
                 while (reader.Read())
                 {
                     Employee_data data = new Employee_data(
-                        Convert.ToInt32(reader["emp_id"]),
-                        Convert.ToString(reader["first_name"]),
-                        Convert.ToString(reader["last_name"]),
-                        Convert.ToString(reader["birth_day"]),
-                        Convert.ToChar(reader["sex"]),
-                        Convert.ToInt32(reader["salary"]),
-                        Convert.ToInt32(reader["supervisor_id"]),
-                        Convert.ToInt32(reader["branch_id"]));
+                        reader[0] == DBNull.Value ? -1 : Convert.ToInt32(reader[0]),
+                        reader[1] == DBNull.Value ? "Null" : Convert.ToString(reader[1]),
+                        reader[2] == DBNull.Value ? "Null" : Convert.ToString(reader[2]),
+                        reader[3] == DBNull.Value ? "Null" : Convert.ToString(reader[3]),
+                        reader[4] == DBNull.Value ? 'N' : Convert.ToChar(reader[4]),
+                        reader[5] == DBNull.Value ? -1 : Convert.ToInt32(reader[5]),
+                        reader[6] == DBNull.Value ? -1 : Convert.ToInt32(reader[6]),
+                        reader[7] == DBNull.Value ? -1 : Convert.ToInt32(reader[7]));
                     list.Add(data);
                 }
                 CloseConnection();
@@ -96,9 +96,9 @@ namespace SQL_Assignment_2
                 while (reader.Read())
                 {
                     Works_data data = new Works_data(
-                        Convert.ToInt32(reader["emp_id"]),
-                        Convert.ToString(reader["client_name"]),
-                        Convert.ToInt32(reader["total_sales"]));
+                        reader[0] == DBNull.Value ? -1 : Convert.ToInt32(reader[0]),
+                        reader[1] == DBNull.Value ? "Null" : Convert.ToString(reader[1]),
+                        reader[2] == DBNull.Value ? -1 : Convert.ToInt32(reader[2]));
                     list.Add(data);
                 }
                 CloseConnection();
