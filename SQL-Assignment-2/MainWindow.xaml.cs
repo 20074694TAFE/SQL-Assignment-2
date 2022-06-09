@@ -36,6 +36,55 @@ namespace SQL_Assignment_2
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             IEnumerable<Employee_data> employees = database.FetchEmployeeData();
+            try
+            {
+                if(SearchTextboxEmployeeId.Text != "")
+                {
+                    employees = database.SearchEmployeeEmpId(employees, Int32.Parse(SearchTextboxEmployeeId.Text));
+                }
+                if(SearchTextboxFirstName.Text != "")
+                {
+                    employees = database.SearchEmployeeFirstName(employees, SearchTextboxFirstName.Text);
+                }
+                if(SearchTextboxLastName.Text != "")
+                {
+                    employees= database.SearchEmployeeLastName(employees,SearchTextboxLastName.Text);
+                }
+                if(SearchTextboxBirthday.Text != "")
+                {
+                    employees = database.SearchBirthDay(employees,SearchTextboxBirthday.Text);
+                }
+                if(SearchComboboxSex.SelectedIndex != 0)
+                {
+                    switch (SearchComboboxSex.SelectedIndex)
+                    {
+                        case 1:
+                            employees = database.SearchEmployeeSex(employees, 'M');
+                            break; 
+                        case 2:
+                            employees = database.SearchEmployeeSex(employees, 'F');
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                if(SearchTextboxSalaryMin.Text != "" || SearchTextboxSalaryMax.Text != "")
+                {
+                    employees = database.SearchEmployeeSalary(employees, SearchTextboxSalaryMin.Text == "" ? 0 : Int32.Parse(SearchTextboxSalaryMin.Text), SearchTextboxSalaryMax.Text == "" ? Int32.MaxValue : Int32.Parse(SearchTextboxSalaryMax.Text));
+                }
+                if(SearchTextboxSupervisorId.Text != "")
+                {
+                    employees = database.SearchEmployeeSupervisorId(employees, Int32.Parse(SearchTextboxSupervisorId.Text));
+                }
+                if(SearchTextboxBranchId.Text != "")
+                {
+                    employees = database.SearchEmployeeBranchId(employees, Int32.Parse(SearchTextboxBranchId.Text));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void ResetButton_Click(object sender, RoutedEventArgs e)
