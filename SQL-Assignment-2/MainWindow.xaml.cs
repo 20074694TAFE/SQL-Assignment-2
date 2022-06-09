@@ -40,7 +40,8 @@ namespace SQL_Assignment_2
             {
                 if(SearchTextboxEmployeeId.Text != "")
                 {
-                    employees = database.SearchEmployeeEmpId(employees, Int32.Parse(SearchTextboxEmployeeId.Text));
+                    employees = database.SearchEmployeeEmpId(employees, 
+                        Int32.Parse(SearchTextboxEmployeeId.Text));
                 }
                 if(SearchTextboxFirstName.Text != "")
                 {
@@ -70,15 +71,19 @@ namespace SQL_Assignment_2
                 }
                 if(SearchTextboxSalaryMin.Text != "" || SearchTextboxSalaryMax.Text != "")
                 {
-                    employees = database.SearchEmployeeSalary(employees, SearchTextboxSalaryMin.Text == "" ? 0 : Int32.Parse(SearchTextboxSalaryMin.Text), SearchTextboxSalaryMax.Text == "" ? Int32.MaxValue : Int32.Parse(SearchTextboxSalaryMax.Text));
+                    employees = database.SearchEmployeeSalary(employees, 
+                        SearchTextboxSalaryMin.Text == "" ? 0 : Int32.Parse(SearchTextboxSalaryMin.Text), 
+                        SearchTextboxSalaryMax.Text == "" ? Int32.MaxValue : Int32.Parse(SearchTextboxSalaryMax.Text));
                 }
                 if(SearchTextboxSupervisorId.Text != "")
                 {
-                    employees = database.SearchEmployeeSupervisorId(employees, Int32.Parse(SearchTextboxSupervisorId.Text));
+                    employees = database.SearchEmployeeSupervisorId(employees, 
+                        Int32.Parse(SearchTextboxSupervisorId.Text));
                 }
                 if(SearchTextboxBranchId.Text != "")
                 {
-                    employees = database.SearchEmployeeBranchId(employees, Int32.Parse(SearchTextboxBranchId.Text));
+                    employees = database.SearchEmployeeBranchId(employees, 
+                        Int32.Parse(SearchTextboxBranchId.Text));
                 }
                 ListBoxEmployees.ItemsSource = employees;
             }
@@ -126,7 +131,36 @@ namespace SQL_Assignment_2
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                char sex;
+                switch (NewComboboxSex.SelectedIndex)
+                {
+                    case 1:
+                        sex = 'M';
+                        break;
+                    case 2:
+                        sex = 'F';
+                        break;
+                    default:
+                        throw new Exception("Please select a sex from the dropdown menu.");
+                }
+                Employee_data employee = new Employee_data(
+                    Int32.Parse(NewTextboxEmployeeId.Text),
+                    NewTextboxFirstName.Text,
+                    NewTextboxLastName.Text,
+                    NewTextboxBirthday.Text,
+                    sex,
+                    Int32.Parse(NewTextboxSalary.Text),
+                    Int32.Parse(NewTextboxSupervisorId.Text),
+                    Int32.Parse(NewTextboxBranchId.Text));
+                //MessageBox.Show("Successfully created an employee");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         private void ListBoxEmployees_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -21,9 +21,9 @@ namespace SQL_Assignment_2
         internal MySqlConnection conn;
 
         //IEnumerable
-        IEnumerable<Employee_data> employee_table;
+        //IEnumerable<Employee_data> employee_table;
 
-        IEnumerable<Works_data> works_table;
+        //IEnumerable<Works_data> works_table;
 
 
         public Database()
@@ -116,7 +116,20 @@ namespace SQL_Assignment_2
         public void InsertEmployeeData(Employee_data data)
         {
             string query = $"INSERT INTO employee_table VALUES ( {data.Emp_id}, {data.First_name}, {data.Last_name}, {data.Birth_day}, {data.Sex}, {data.Salary}, {data.Supervisor_id}, {data.Salary});";
-            FetchEmployeeData();
+            try
+            {
+                MySqlCommand command = new MySqlCommand(query, conn);
+                if (command.ExecuteNonQuery() != -1)
+                {
+                    MessageBox.Show("Success");
+                    return;
+                }
+                MessageBox.Show("Failure");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         //TODO
