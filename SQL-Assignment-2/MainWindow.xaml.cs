@@ -29,8 +29,8 @@ namespace SQL_Assignment_2
             NewComboboxSex.ItemsSource = sexList;
             SearchComboboxSex.SelectedItem = sexList[0];
             NewComboboxSex.SelectedItem = sexList[0];
-            ListBoxEmployees.ItemsSource = database.FetchEmployeeData();
-            ListBoxSales.ItemsSource = database.FetchWorksData();
+            ResetEmployeeData();
+            ResetSalesData();
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
@@ -108,8 +108,8 @@ namespace SQL_Assignment_2
             SearchTextboxSalaryMax.Text = "";
             SearchTextboxSupervisorId.Text = "";
             SearchTextboxBranchId.Text = "";
-            ListBoxEmployees.ItemsSource = database.FetchEmployeeData();
-            ListBoxSales.ItemsSource = database.FetchWorksData();
+            ResetEmployeeData();
+            ResetSalesData();
         }
 
         private void ClearNewEmployee()
@@ -154,7 +154,10 @@ namespace SQL_Assignment_2
                     Int32.Parse(NewTextboxSalary.Text),
                     Int32.Parse(NewTextboxSupervisorId.Text),
                     Int32.Parse(NewTextboxBranchId.Text));
-                //MessageBox.Show("Successfully created an employee");
+                database.InsertEmployeeData(employee);
+                MessageBox.Show("Successfully created an employee");
+                ClearNewEmployee();
+                ClearSearchEmployee();
             }
             catch (Exception ex)
             {
@@ -194,7 +197,17 @@ namespace SQL_Assignment_2
 
         private void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
+            ResetEmployeeData();
+            ResetSalesData();
+        }
+
+        private void ResetEmployeeData()
+        {
             ListBoxEmployees.ItemsSource = database.FetchEmployeeData();
+        }
+
+        private void ResetSalesData()
+        {
             ListBoxSales.ItemsSource = database.FetchWorksData();
         }
     }

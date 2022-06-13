@@ -8,7 +8,7 @@
         Title="MainWindow" Height="500" Width="800">
     <Grid>
         
-        <TabControl >
+        <TabControl x:Name="DatabaseTabs">
             <TabItem Header="Welcome">
                 <Grid>
                     <Grid.ColumnDefinitions>
