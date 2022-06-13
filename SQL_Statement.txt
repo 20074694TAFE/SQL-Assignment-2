@@ -4,7 +4,7 @@ DROP USER IF EXISTS 'ME_company_db' @'localhost';
 
 CREATE DATABASE IF NOT EXISTS ME_company_db;
 
-CREATE USER 'ME_company_db' @'localhost' IDENTIFIED WITH mysql_native_password BY 'Password1';
+CREATE USER 'ME_company_db' @'localhost' IDENTIFIED BY 'Password1';
 
 GRANT USAGE ON *.* TO 'ME_company_db' @'localhost' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
 
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS employee_table (
     first_name VARCHAR(255) NOT NULL,
     last_name VARCHAR(255) NOT NULL,
     birth_day VARCHAR(255) NOT NULL,
-    sex CHAR NOT NULL,
+    sex VARCHAR(1) NOT NULL,
     salary INTEGER UNSIGNED NOT NULL DEFAULT 0,
     supervisor_id INTEGER UNSIGNED DEFAULT NULL,
     branch_id INTEGER UNSIGNED NOT NULL,

@@ -101,7 +101,6 @@ namespace SQL_Assignment_2
                         reader[2] == DBNull.Value ? -1 : Convert.ToInt32(reader[2]));
                     list.Add(data);
                 }
-                CloseConnection();
                 return list.AsEnumerable<Works_data>();
             }
             catch (Exception ex)
@@ -109,27 +108,45 @@ namespace SQL_Assignment_2
                 MessageBox.Show(ex.Message);
                 return null;
             }
+            finally
+            {
+                CloseConnection();
+            }
             
         }
 
         //TODO
-        public void InsertEmployeeData(Employee_data data)
+        public bool TryInsertEmployeeData(Employee_data data)
         {
-            string query = $"INSERT INTO employee_table VALUES ( {data.Emp_id}, {data.First_name}, {data.Last_name}, {data.Birth_day}, {data.Sex}, {data.Salary}, {data.Supervisor_id}, {data.Salary});";
+            int result = -1;
+            string query = $"INSERT INTO employee_table VALUES ( @Emp_id, @First_name, @Last_name, " +
+                $"@Birth_day, @Sex, @Salary, @Supervisor_id, @Branch_id)";
+            MySqlCommand command = new MySqlCommand(query, conn);
+            command.Parameters.AddWithValue("@Emp_id",data.Emp_id);
+            command.Parameters.AddWithValue("@First_name", data.First_name.ToString());
+            command.Parameters.AddWithValue("@Last_name", data.Last_name.ToString());
+            command.Parameters.AddWithValue("@Birth_day", data.Birth_day.ToString());
+            command.Parameters.AddWithValue("@Sex", data.Sex.ToString());
+            command.Parameters.AddWithValue("@Salary", data.Salary);
+            command.Parameters.AddWithValue("@Supervisor_id", data.Supervisor_id);
+            command.Parameters.AddWithValue("@Branch_id", data.Branch_id);
             try
             {
-                MySqlCommand command = new MySqlCommand(query, conn);
-                if (command.ExecuteNonQuery() != -1)
-                {
-                    MessageBox.Show("Success");
-                    return;
-                }
-                MessageBox.Show("Failure");
+                
+                OpenConnection();
+                result = command.ExecuteNonQuery();
+                
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+            finally
+            {
+                CloseConnection();
+                
+            }
+            return result >= 0;
         }
 
         //TODO

@@ -154,10 +154,12 @@ namespace SQL_Assignment_2
                     Int32.Parse(NewTextboxSalary.Text),
                     Int32.Parse(NewTextboxSupervisorId.Text),
                     Int32.Parse(NewTextboxBranchId.Text));
-                database.InsertEmployeeData(employee);
-                MessageBox.Show("Successfully created an employee");
-                ClearNewEmployee();
-                ClearSearchEmployee();
+                if (database.TryInsertEmployeeData(employee))
+                {
+                    MessageBox.Show("Successfully created an employee");
+                    ClearNewEmployee();
+                    ClearSearchEmployee();
+                }
             }
             catch (Exception ex)
             {
