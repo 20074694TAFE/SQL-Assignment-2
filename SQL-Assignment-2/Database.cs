@@ -112,10 +112,8 @@ namespace SQL_Assignment_2
             {
                 CloseConnection();
             }
-            
         }
-
-        //TODO
+            
         public bool TryInsertEmployeeData(Employee_data data)
         {
             int result = -1;

@@ -23,7 +23,8 @@
                         <RowDefinition Height="20"/>
                     </Grid.RowDefinitions>
                     <Label Grid.Row="1" Grid.Column="1" Content="MyCompany Database Search"  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="48"/>
-                    <TextBlock Grid.Row="2" Grid.Column="1" Text="Insert Company Summary here." VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="SummaryTextBlock" Grid.Row="2" Grid.Column="1" Text="Insert Company Summary here." VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    <Image Source="MyCompany.png" Grid.Row="2" Grid.Column="1" Height="200" HorizontalAlignment="Right"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Search Employees">

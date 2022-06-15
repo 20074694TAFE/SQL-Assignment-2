@@ -22,6 +22,11 @@ namespace SQL_Assignment_2
     {
         List<string> sexList = new List<string> {"", "Male", "Female"};
         Database database = new Database();
+        string summary = "Hello, welcome to the MyCompany database search application.\n\n" +
+            "Included is a searching tab for searching through the database.\n" +
+            "Input text and select 'search' to search the database.\n\n" +
+            "You can add new employees to the database through the add employees tab.\n" +
+            "There is limited data validation for entries so you please be careful.";
         public MainWindow()
         {
             InitializeComponent();
@@ -29,6 +34,7 @@ namespace SQL_Assignment_2
             NewComboboxSex.ItemsSource = sexList;
             SearchComboboxSex.SelectedItem = sexList[0];
             NewComboboxSex.SelectedItem = sexList[0];
+            SummaryTextBlock.Text = summary;
             ResetEmployeeData();
             ResetSalesData();
         }
